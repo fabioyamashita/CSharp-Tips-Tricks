@@ -1,1 +1,3 @@
-# CSharp-Tips-Tricks
+# C# Tips & Tricks
+C# Tips and Tricks of my learning experience
+
