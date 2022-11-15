@@ -18,7 +18,17 @@ namespace Fetching_Data_with_JsonNode
             {
                 var jsonNodePokemon = await Fetch($"{uri}{pokemonId}");
                 var pokemonName = jsonNodePokemon!["name"];
-                Console.WriteLine($"Pokémon #{pokemonId}: {pokemonName?.ToString().ToUpper()}");
+                Console.WriteLine($"\nPokémon #{pokemonId}: {pokemonName?.ToString().ToUpper()}");
+
+                var specieURL = jsonNodePokemon!["species"]!.AsObject()!["url"];
+                Console.WriteLine($"Specie URL: {specieURL}");
+
+                Console.WriteLine("Types:");
+                var types = jsonNodePokemon!["types"]!.AsArray();
+                foreach (var type in types)
+                {
+                    Console.WriteLine($"- {type!["type"]!["name"]}");
+                }
             }
             catch (Exception e)
             {
